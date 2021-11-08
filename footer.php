@@ -4,8 +4,6 @@
  *
  * Contains the closing of the #content div and all content after.
  *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
  * @package Abril_Theme
  */
 
@@ -13,17 +11,26 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'sample-theme' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'sample-theme' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'sample-theme' ), 'sample-theme', '<a href="http://underscores.me/">Arielle V. Lucca</a>' );
-				?>
+			<div class="row">
+				<div class="col-xs-12 col-lg-6">
+					<a href="<?php echo esc_url( __( 'https://wordpress.com/', 'sample-theme' ) ); ?>">
+						<?php
+						/* translators: %s: CMS name, i.e. WordPress. */
+						printf( esc_html__( '@ Abril Mídia S.A. All rights reserved.', 'sample-theme' ) );
+						?>
+					</a>
+				</div>
+				<div class="col-xs-12 col-lg-6">
+					<a href="<?php echo esc_url( __( 'https://wordpress.com/', 'sample-theme' ) ); ?>">
+						<?php
+						/* translators: %s: CMS name, i.e. WordPress. */
+						printf( esc_html__( 'Powered by %s', 'sample-theme' ), 'WordPress.com VIP' );
+						?>
+					</a>
+				</div>
+			</div>
+
+			
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

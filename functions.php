@@ -7,19 +7,7 @@
  * @package Abril_Theme
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
-}
-
 if ( ! function_exists( 'sample_theme_setup' ) ) :
-	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
-	 */
 	function sample_theme_setup() {
 		load_theme_textdomain( 'sample-theme', get_template_directory() . '/languages' );
 
@@ -29,6 +17,15 @@ if ( ! function_exists( 'sample_theme_setup' ) ) :
 
 		add_theme_support( 'post-thumbnails' );
 
+		add_theme_support( 'custom-logo', array(
+			'height'               => 60,
+			'width'                => 200,
+			'flex-height'          => true,
+			'flex-width'           => true,
+			'header-text'          => array( 'site-title', 'site-description' ),
+			'unlink-homepage-logo' => true, 
+		) );
+		
 		add_theme_support(
 			'html5',
 			array(
@@ -58,5 +55,12 @@ function sample_theme_scripts() {
 
 	wp_enqueue_style( 'grid-theme-style', get_template_directory_uri() . '/assets/css/grid-system.css', array(), @filemtime( get_template_directory_uri() . '/assets/css/grid-system.css' ) );
 	
+	wp_enqueue_script( 'sample-theme-scripts', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), @filemtime( get_stylesheet_uri() . '/assets/js/scripts.js' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'sample_theme_scripts' );
+
+function sampletheme_get_svg( $svg_path ) {
+	if ( file_exists( trailingslashit( get_template_directory() ) . $svg_path ) ) {
+		return file_get_contents( trailingslashit( get_template_directory() ) . $svg_path );
+	}
+}
