@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                         <div class="main-loop-featured">
-                            <img src="<?php echo esc_url( $post->featured_media_url ) ?>" alt="<?php echo esc_html__( $post->title->rendered ) ?>" />
+                            <img src="<?php echo esc_url( $post->featured_media_url ) ?>" alt="<?php echo esc_html__( $post->title->rendered ) ?>" loading="lazy" />
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-6">
