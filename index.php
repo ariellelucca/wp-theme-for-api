@@ -13,6 +13,8 @@
  */
 
 get_header();
+
+
 ?>
 
 	<main id="primary" class="site-main">
@@ -30,14 +32,17 @@ get_header();
 
 						?>
 					</div>
+					<button type="button" data-last-value="2" id="loop-load-more">Carregar mais</button>
 				</div>
 
 				<div class="col-xs-12 col-lg-4">
-					<?php
-
-					get_sidebar();
-
-					?>
+					<aside id="secondary" class="widget-area">
+						<?php
+							if ( is_active_sidebar( 'sidebar-home' ) ) {
+								dynamic_sidebar( 'sidebar-home' ); 
+							}
+						?>
+					</aside>
 				</div>
 			</div>
 		</div>

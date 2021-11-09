@@ -1,6 +1,9 @@
 <?php
 
-    $page = 1;
+
+    $page = ( !( empty( $_POST['page'] ) ) ) ? $_POST['page'] : 1;
+
+   // $page = 1;
     $posts = sample_theme_posts( $page );
 
     foreach ( $posts as $post ) {
@@ -28,9 +31,13 @@
 
                         <div class="main-loop-date">
                             <?php 
-                            echo sampletheme_get_svg('assets/icons/clock-solid.svg'); 
-                            
-                            echo esc_html__( $post->modified_gmt ) ?>
+                                echo sampletheme_get_svg('assets/icons/clock-solid.svg'); 
+
+                                /* Formata a data e hora conforme layout configurado no painel */
+                                $dateFormat = get_option( 'date_format' );
+                                $timeFormat = get_option( 'time_format' );
+                                echo date_i18n( $dateFormat . ', ' . $timeFormat, strtotime( $post->modified_gmt ) )
+                            ?>
                         </div>
                     </div>
                 </div>
