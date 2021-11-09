@@ -20,6 +20,11 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 	src: url('assets/fonts/Roboto-Regular.ttf');
 }
 
+@font-face {
+	font-family: 'Roboto Bold';
+	src: url('assets/fonts/Roboto-Bold.ttf');
+}
+
 :root {
 	--main-blue: #1e3d7c;
 }
@@ -28,6 +33,14 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 body {
 	margin: 0;
 	padding: 0;
+}
+
+h1 { 
+	font-size: 32px;
+}
+
+h2 {
+	font-size: 28px;
 }
 
 #masthead {
@@ -236,5 +249,59 @@ body {
 	.copy-abril, .copy-wp {
 		text-align: center !important;
 		margin: 5px 0;
+	}
+}
+
+/* HOME */
+.site-main .page-title {
+	font-family: 'Roboto Bold';
+	color: var(--main-blue);
+}
+
+#main-loop .main-loop-post {
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+#main-loop .main-loop-post:not(:last-of-type) {
+	border-bottom: 1px solid #eeeeee;
+}
+
+#main-loop .main-loop-post .main-loop-featured img {
+	max-width: 100%;
+	height: auto;
+}
+
+#main-loop .main-loop-post .main-loop-title {
+	font-family: 'Roboto Bold';
+	color: #000000;
+}
+
+#main-loop .main-loop-post .main-loop-title h2 {
+	margin: 0;
+}
+
+
+#main-loop .main-loop-post .main-loop-term {
+	font-family: 'Roboto Bold';
+	color: var(--main-blue);
+	font-size: 14px;
+}
+
+#main-loop .main-loop-post .main-loop-date {
+	margin-top: 10px;
+	display: flex;
+}
+
+#main-loop .main-loop-post .main-loop-date svg {
+	width: 20px;
+	height: 20px;
+	fill: #000000;
+	margin-right: 5px;
+}
+
+@media(max-width:1199px) {
+	.row {
+		flex-direction: column;
 	}
 }

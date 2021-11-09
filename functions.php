@@ -50,17 +50,62 @@ endif;
 add_action( 'after_setup_theme', 'sample_theme_setup' );
 
 function sample_theme_scripts() {
+
+
 	wp_enqueue_style( 'sample-theme-style', get_stylesheet_uri(), array(), @filemtime( get_stylesheet_uri() ) );
 	wp_style_add_data( 'sample-theme-style', 'rtl', 'replace' );
 
 	wp_enqueue_style( 'grid-theme-style', get_template_directory_uri() . '/assets/css/grid-system.css', array(), @filemtime( get_template_directory_uri() . '/assets/css/grid-system.css' ) );
 	
 	wp_enqueue_script( 'sample-theme-scripts', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), @filemtime( get_stylesheet_uri() . '/assets/js/scripts.js' ), true );
+
 }
 add_action( 'wp_enqueue_scripts', 'sample_theme_scripts' );
 
+
 function sampletheme_get_svg( $svg_path ) {
+
 	if ( file_exists( trailingslashit( get_template_directory() ) . $svg_path ) ) {
 		return file_get_contents( trailingslashit( get_template_directory() ) . $svg_path );
 	}
+
+}
+
+add_action('wp_ajax_nopriv_sample_theme_posts_api', 'sample_theme_posts_api');
+add_action('wp_ajax_sample_theme_posts_api', 'sample_theme_posts_api');
+
+function sample_theme_posts_api( $page ) {
+
+	//$page = ( !( empty( $_POST['page'] ) ) ) ? ( !( empty( $_POST['page'] ) ) ) : 1;
+
+	$results = wp_remote_retrieve_body( wp_remote_get('https://veja.abril.com.br/wp-json/wp/v2/posts?page=' . $page . '&per_page=10') );
+
+	$results = json_decode( $results );
+
+	return $results;
+
+	if ( ! ( is_array( $results ) ) || ( empty ( $results ) ) ) {
+		return false;
+	}
+
+	//$page = $page + 1;
+
+/*
+	wp_remote_post( admin_url( 'admin-ajax.php?action=sample_theme_posts_api' ), [	
+		'body'      => [
+			'page'  => $page,
+		],
+		'blocking'  => false,
+		'sslverify' => false,
+	]);
+*/
+
+	return $results;
+
+}
+
+function sample_theme_posts( $page ) {
+	$posts = sample_theme_posts_api( $page );
+
+	return $posts;
 }
