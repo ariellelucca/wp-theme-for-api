@@ -32,7 +32,7 @@ get_header();
 
 						?>
 					</div>
-					<button type="button" data-last-value="2" id="loop-load-more">Carregar mais</button>
+					<button type="button" data-last-value="2" id="loop-load-more"><?php echo __('Load More', 'sample-theme') ?></button>
 				</div>
 
 				<div class="col-xs-12 col-lg-4">
