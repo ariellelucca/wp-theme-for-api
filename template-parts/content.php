@@ -3,7 +3,6 @@
 
     $page = ( !( empty( $_POST['page'] ) ) ) ? $_POST['page'] : 1;
 
-   // $page = 1;
     $posts = sample_theme_posts( $page );
 
     foreach ( $posts as $post ) {
@@ -31,6 +30,7 @@
 
                         <div class="main-loop-date">
                             <?php 
+                                /* Imprime o SVG de relógio */
                                 echo sampletheme_get_svg('assets/icons/clock-solid.svg'); 
 
                                 /* Formata a data e hora conforme layout configurado no painel */

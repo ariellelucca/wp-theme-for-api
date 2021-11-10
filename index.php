@@ -27,11 +27,12 @@ get_header();
 
 					<div id="main-loop">
 						<?php
-
+						// Carrega o template part content inicialmente da página 1
 						get_template_part( 'template-parts/content' );
 
 						?>
 					</div>
+					<!-- Botão que tem o onclick para consumo da API -->
 					<button type="button" data-last-value="2" id="loop-load-more"><?php echo __('Load More', 'sample-theme') ?></button>
 				</div>
 

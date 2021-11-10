@@ -72,7 +72,7 @@ function sample_theme_scripts() {
 
 }
 
-
+/* Função para carregar svg */
 function sampletheme_get_svg( $svg_path ) {
 
 	if ( file_exists( trailingslashit( get_template_directory() ) . $svg_path ) ) {
@@ -81,7 +81,7 @@ function sampletheme_get_svg( $svg_path ) {
 
 }
 
-
+/* Faz a requisição de consumo da API */
 add_action('wp_ajax_nopriv_sample_theme_posts_api', 'sample_theme_posts_api');
 
 add_action('wp_ajax_sample_theme_posts_api', 'sample_theme_posts_api');
@@ -92,6 +92,7 @@ function sample_theme_posts_api( $page ) {
 
 	$results = json_decode( $results );
 
+	/* Se estiver vazio ou se não for um array, retorna */
 	if ( ! ( is_array( $results ) ) || ( empty ( $results ) ) ) {
 		return false;
 	}
@@ -100,6 +101,7 @@ function sample_theme_posts_api( $page ) {
 }
 
 
+/* Faz a chamada da função que consome os posts da API */
 function sample_theme_posts( $page ) {
 
 	$posts = sample_theme_posts_api( $page );
@@ -109,18 +111,22 @@ function sample_theme_posts( $page ) {
 }
 
 
+/* Faz parte da requisição ajax para o carregamento de mais posts na home */
+
 add_action('wp_ajax_nopriv_sample_theme_include_posts', 'sample_theme_include_posts');
 
 add_action('wp_ajax_sample_theme_include_posts', 'sample_theme_include_posts');
 
 function sample_theme_include_posts( $page ) {
 
+	/* Inclui um template part com o loop de posts para a página passada por parâmetro */
 	get_template_part( 'template-parts/content', array( 'page' => $page ) );
 	wp_die();
 
 }
 
 
+/* Registra a sidebar Custom que é mostrada na home */
 add_action( 'widgets_init', 'sample_theme_home_sidebar' );
 
 function sample_theme_home_sidebar() {
