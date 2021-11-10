@@ -2,8 +2,6 @@
 /**
  * The template for displaying the footer
  *
- * Contains the closing of the #content div and all content after.
- *
  * @package Abril_Theme
  */
 
@@ -15,9 +13,8 @@
 				<div class="row">
 					<div class="col-xs-12 col-lg-6">
 						<div class="copy-abril">
-							<a href="<?php echo esc_url( __( 'https://wordpress.com/', 'sample-theme' ) ); ?>">
+							<a href="<?php echo esc_url( __( 'https://grupoabril.com.br/', 'sample-theme' ) ); ?>">
 								<?php
-								/* translators: %s: CMS name, i.e. WordPress. */
 								printf( esc_html__( '@ Abril Mídia S.A. All rights reserved.', 'sample-theme' ) );
 								?>
 							</a>
@@ -27,7 +24,6 @@
 						<div class="copy-wp">
 							<a href="<?php echo esc_url( __( 'https://wordpress.com/', 'sample-theme' ) ); ?>">
 								<?php
-								/* translators: %s: CMS name, i.e. WordPress. */
 								printf( esc_html__( 'Powered by %s', 'sample-theme' ), 'WordPress.com VIP' );
 								?>
 							</a>
